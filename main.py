@@ -9,6 +9,7 @@ from kivymd.uix.selectioncontrol import MDCheckbox
 
 from datetime import datetime
 
+# To be added after creating the database
 from database import Database
 # Initialize db instance
 db = Database()
