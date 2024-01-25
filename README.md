@@ -26,8 +26,6 @@ Delete tasks.
 The app uses a simple database module (database.py) for storing task information. Ensure that the database module is created before running the app.
 
 `python
-#To be added after creating the database
 from database import Database
-#Initialize db instance
 db = Database()
 `
