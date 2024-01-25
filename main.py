@@ -78,16 +78,16 @@ class MainApp(MDApp):
     def on_start(self):
         # Load the saved tasks and add them to the MDList widget when the application starts
         try:
-            completed_tasks, incompleted_tasks = db.get_tasks()
+            incompleted_tasks, completed_tasks = db.get_tasks()
 
             if incompleted_tasks != []:
                 for task in incompleted_tasks:
-                    add_task = ListItemWithCheckbox(pk=task[0],text=task[1], secondary_text=task[2])
+                    add_task = ListItemWithCheckbox(pk=task[0],text=str(task[1]), secondary_text=task[2])
                     self.root.ids.container.add_widget(add_task)
 
             if completed_tasks != []:
                 for task in completed_tasks:
-                    add_task = ListItemWithCheckbox(pk=task[0],text='[s]'+task[1]+'[/s]', secondary_text=task[2])
+                    add_task = ListItemWithCheckbox(pk=task[0],text='[s]'+str(task[1])+'[/s]', secondary_text=task[2])
                     add_task.ids.check.active = True
                     self.root.ids.container.add_widget(add_task)
         except Exception as e:
@@ -103,7 +103,7 @@ class MainApp(MDApp):
         created_task = db.create_task(task.text, task_date)
 
         # return the created task details and create a list item
-        self.root.ids['container'].add_widget(ListItemWithCheckbox(pk=created_task[0], text='[b]'+created_task[1]+'[/b]', secondary_text=created_task[2]))
+        self.root.ids['container'].add_widget(ListItemWithCheckbox(pk=created_task[0], text='[b]'+str(created_task[1])+'[/b]', secondary_text=created_task[2]))
         task.text = ''
 
 if __name__ == '__main__':
